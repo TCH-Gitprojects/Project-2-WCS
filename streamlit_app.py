@@ -29,14 +29,14 @@ import requests
 from streamlit_lottie import st_lottie
 from st_on_hover_tabs import on_hover_tabs
 
-actors = pd.read_csv("/Users/tony/Desktop/StreamLit/Avec_nconst.csv")
-top10_2022 = pd.read_csv("/Users/tony/Desktop/StreamLit/top_10_2022.csv")
-top10 = pd.read_csv("/Users/tony/Desktop/StreamLit/top10.csv")
-avg_runtime = pd.read_csv("/Users/tony/Desktop/StreamLit/avg_runtime.csv")
-film2022 = pd.read_csv("/Users/tony/Desktop/StreamLit/film_2022.csv")
-testgenres = pd.read_csv("/Users/tony/Desktop/StreamLit/Avec_tconst.csv",low_memory=False)
-top10_30y = pd.read_csv("/Users/tony/Desktop/StreamLit/top_10_des_30.csv")
-kpi_22 = pd.read_csv("/Users/tony/Desktop/StreamLit/describe_df2.csv")
+actors = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/Avec_nconst.csv")
+top10_2022 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top_10_2022.csv")
+top10 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top10.csv")
+avg_runtime = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/avg_runtime.csv")
+film2022 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/film_2022.csv")
+testgenres = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/Avec_tconst.csv",low_memory=False)
+top10_30y = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top_10_des_30.csv")
+kpi_22 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/describe_df2.csv")
 
 top10_30y = top10_30y.rename(columns={"Temps du film": "Durée du film en minutes"})
 
