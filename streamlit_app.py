@@ -244,7 +244,7 @@ elif tabs == 'La Creuse':
     Le département de la Creuse possède une population vieillissante et en déclin démographique.
     '''
 
-    st.image('/Users/tony/Desktop/Evolution pop.png')
+    st.image('https://github.com/TCH-Gitprojects/Project-2-WCS/blob/main/StreamLit/Evolution%20pop.png')
     '''
     Ainsi, nous observons que la Creuse perd bon nombre d'habitants au fil des ans. Les jeunes partent vers les grandes agglomérations en dehors du département, ce qui provoque un déficit important de citoyens.
     
