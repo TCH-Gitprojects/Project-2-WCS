@@ -137,12 +137,7 @@ with st.sidebar:
     tabs = on_hover_tabs(tabName=['Waiting Screen','Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration","Difficultées"], 
                          iconName=['capture','co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates','error'], default_choice=0)
 
-if tabs == 'Waiting Screen':
-    col1, mid, col2 = st.columns(3)
-    with col1:
-        st.image("/Users/tony/Downloads/codowski.jpg", width = 1000)
-
-elif tabs =='Présentation':
+if tabs =='Présentation':
     st.title('Bienvenue sur le Streamlit de notre projet :man-man-girl-boy:')
     '''
 ##### Nous sommes The Big Codowski et notre équipe est composée de :
