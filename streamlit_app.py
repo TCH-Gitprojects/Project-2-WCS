@@ -504,7 +504,7 @@ elif tabs == 'Machine Learning':
     '''
 # Machine Learning :robot_face:
     '''
-    algotest3 = pd.read_csv("/Users/tony/Desktop/StreamLit/dfalgotest2.csv")
+    algotest3 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/dfalgotest2.csv")
     algotest3.index = algotest3["title"]
     algotest3 = algotest3.loc[algotest3["numVotes"]>=100000]
     X2 = algotest3.select_dtypes("number").drop(["numVotes","startYear","runtimeMinutes"],axis=1)
