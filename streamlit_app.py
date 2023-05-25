@@ -80,7 +80,7 @@ def make_clickable(url):
 st.set_page_config(layout="wide")
 
 st.markdown("<h1 style='text-align: center; color: black;'><em>Wild Code School 2023</em><br><strong>Projet 2 - IMDb</strong></h1>", unsafe_allow_html=True)
-st.markdown('<style>'/*section[data-testid='stSidebar'] {
+st.markdown('<style>'section[data-testid='stSidebar'] {
     background-color: #111;
     min-width:unset !important;
     width: unset !important;
@@ -136,7 +136,7 @@ button[kind="header"] {
     section[data-testid='stSidebar'] > div {
         width:15rem;
     }
-}*/'</style>', unsafe_allow_html=True)
+}'</style>', unsafe_allow_html=True)
 
 
 with st.sidebar:
