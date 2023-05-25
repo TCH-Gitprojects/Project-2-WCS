@@ -80,7 +80,7 @@ def make_clickable(url):
 st.set_page_config(layout="wide")
 
 st.markdown("<h1 style='text-align: center; color: black;'><em>Wild Code School 2023</em><br><strong>Projet 2 - IMDb</strong></h1>", unsafe_allow_html=True)
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
+st.markdown('<style>' + open('https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/style.css').read() + '</style>', unsafe_allow_html=True)
 
 
 with st.sidebar:
