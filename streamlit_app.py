@@ -29,14 +29,14 @@ import requests
 from streamlit_lottie import st_lottie
 from st_on_hover_tabs import on_hover_tabs
 
-actors = pd.read_csv("/Users/tony/Desktop/StreamLit/Avec_nconst.csv")
-top10_2022 = pd.read_csv("/Users/tony/Desktop/StreamLit/top_10_2022.csv")
-top10 = pd.read_csv("/Users/tony/Desktop/StreamLit/top10.csv")
-avg_runtime = pd.read_csv("/Users/tony/Desktop/StreamLit/avg_runtime.csv")
-film2022 = pd.read_csv("/Users/tony/Desktop/StreamLit/film_2022.csv")
-testgenres = pd.read_csv("/Users/tony/Desktop/StreamLit/Avec_tconst.csv",low_memory=False)
-top10_30y = pd.read_csv("/Users/tony/Desktop/StreamLit/top_10_des_30.csv")
-kpi_22 = pd.read_csv("/Users/tony/Desktop/StreamLit/describe_df2.csv")
+actors = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/Avec_nconst.csv")
+top10_2022 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top_10_2022.csv")
+top10 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top10.csv")
+avg_runtime = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/avg_runtime.csv")
+film2022 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/film_2022.csv")
+testgenres = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/Avec_tconst.csv",low_memory=False)
+top10_30y = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/top_10_des_30.csv")
+kpi_22 = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/describe_df2.csv")
 
 top10_30y = top10_30y.rename(columns={"Temps du film": "Durée du film en minutes"})
 
@@ -80,19 +80,64 @@ def make_clickable(url):
 st.set_page_config(layout="wide")
 
 st.markdown("<h1 style='text-align: center; color: black;'><em>Wild Code School 2023</em><br><strong>Projet 2 - IMDb</strong></h1>", unsafe_allow_html=True)
-st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
+css = '''
+<style>
+    section[data-testid='stSidebar'] {
+        background-color: #111;
+        min-width: unset !important;
+        width: unset !important;
+        flex-shrink: unset !important;
+    }
+
+    button[kind="header"] {
+        background-color: transparent;
+        color: rgb(180, 167, 141);
+    }
+
+    @media(hover) {
+        header[data-testid="stHeader"] {
+            display: none;
+        }
+
+        section[data-testid='stSidebar'] > div {
+            height: 100%;
+            width: 95px;
+            position: relative;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s ease;
+            padding-top: 60px;
+            white-space: nowrap;
+        }
+
+        section[data-testid='stSidebar'] > div:hover {
+            width: 300px;
+        }
+
+        button[kind="header"] {
+            display: none;
+        }
+    }
+
+    @media(max-width: 272px) {
+        section[data-testid='stSidebar'] > div {
+            width: 15rem;
+        }
+    }
+</style>
+'''
+st.markdown(css, unsafe_allow_html=True)
+
 
 
 with st.sidebar:
     tabs = on_hover_tabs(tabName=['Waiting Screen','Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration","Difficultées"], 
                          iconName=['capture','co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates','error'], default_choice=0)
 
-if tabs == 'Waiting Screen':
-    col1, mid, col2 = st.columns(3)
-    with col1:
-        st.image("/Users/tony/Downloads/codowski.jpg", width = 1000)
-
-elif tabs =='Présentation':
+if tabs =='Présentation':
     st.title('Bienvenue sur le Streamlit de notre projet :man-man-girl-boy:')
     '''
 ##### Nous sommes The Big Codowski et notre équipe est composée de :
@@ -198,12 +243,8 @@ elif tabs == 'La Creuse':
     
     Le département de la Creuse possède une population vieillissante et en déclin démographique.
     '''
-    
-    from PIL import Image
 
-    image = Image.open('/Users/tony/Desktop/Evolution pop.png')
-
-    st.image(image)
+    st.image('/Users/tony/Desktop/Evolution pop.png')
     '''
     Ainsi, nous observons que la Creuse perd bon nombre d'habitants au fil des ans. Les jeunes partent vers les grandes agglomérations en dehors du département, ce qui provoque un déficit important de citoyens.
     
