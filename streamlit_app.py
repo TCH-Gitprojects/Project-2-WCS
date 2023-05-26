@@ -134,14 +134,10 @@ st.markdown(css, unsafe_allow_html=True)
 
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Waiting Screen','Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration","Difficultées"], 
-                         iconName=['capture','co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates','error'], default_choice=0)
-
-
-if tabs =='Waiting Screen':
-	st.image('https://zupimages.net/up/23/21/nerz.jpg')
+    tabs = on_hover_tabs(tabName=['Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration","Difficultées"], 
+                         iconName=['co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates','error'], default_choice=0)
 	
-elif tabs =='Présentation':
+if tabs =='Présentation':
     st.title('Bienvenue sur le Streamlit de notre projet :man-man-girl-boy:')
     '''
 ##### Nous sommes The Big Codowski et notre équipe est composée de :
