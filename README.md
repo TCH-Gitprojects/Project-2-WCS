@@ -129,3 +129,42 @@ imdbmovs2 = pd.merge(imdbmovs,
                        right_on = "tconst")
 ```
 
+A la fin de nos manipulations de données, nous avons pu produire deux Dataframe à partir desquels nous avons produits notre étude de marché et nos Datavisualisations ainsi que nos Metrics importantes.
+
+Il nous a paru plus judicieux de focaliser notre analyse sur les 30 dernières années afin de concervé la cohérence d'une étude de marché pour un directeur de cinéma.
+
+Le code de ces représentations est le suivant :
+```python
+# Utilisation des expander de StreamLit pour une meilleure lecture de notre site
+
+ with st.expander("Moyenne de la durée et répartition par genres :"):
+ 
+# Utilisation de la librairie Plotly Express avec le module go pour plus de personalisations des graphiques, ici une Treemap des genres
+        fig4 = go.Figure(go.Treemap(
+    	values=totalgenres.values,
+    	labels=totalgenres.index,
+    	parents=["Genres"] * len(totalgenres.index),
+        textinfo = "label+value+percent root",
+        textposition='middle center',
+        hoverinfo = 'skip',
+        texttemplate='<b>%{label}</b><br>%{value} films<br>Ratio : %{percentRoot}',
+        insidetextfont=dict(size=16),           
+        marker=dict(
+            colorscale='Viridis'),
+            ))
+        fig4.update_layout(margin = dict(t=0, l=0, r=0, b=0),                 
+    	height=630,
+    	)
+    
+# Utilisation de la librairie Plotly Express pour un Line chart de l'évolution de la durée des films sur les 30 dernières années
+        fig5 = px.line(avg_runtime, 
+                       x="startYearNumeric", 
+                       y="runtimeNumeric", 
+                       title="Durée moyenne des films (en minutes) au cours des 30 dernières années.", 
+                       color_discrete_sequence=px.colors.sequential.Viridis)
+        fig5.update_layout(title_x=0.25)
+        fig5.update_xaxes(title_text="Année")
+        fig5.update_yaxes(title_text="Durée (minutes)")
+        st.plotly_chart(fig5, use_container_width=True)
+        st.metric(label="Durée moyenne sur les 30 dernières années", value="91 minutes")
+```
