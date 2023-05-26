@@ -321,7 +321,7 @@ elif tabs == 'Exploration':
                         y=top_actor.index,
                      textposition='inside',
                      orientation='h', 
-                     width=1, 
+                     width=0.7, 
                      showlegend=False, 
                      marker=dict(
                     color=px.colors.sequential.Viridis)), 
