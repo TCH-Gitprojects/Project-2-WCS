@@ -225,3 +225,87 @@ with st.expander("Top genres 2022 :"):
         img_style={"margin": "5px", "height": "200px"},
 	    )
         st.dataframe(kpi_22, use_container_width=True)
+```
+
+### Réalisation d'un algorithme de recommandation de film :
+
+Pour répondre à la demande du directeur de cinéma, nous avons réalisé un système de recommandation de films.
+Celui-ci est en phase de test et permet à l'heure actuel de fournir une liste de recommandation selon un film choisi par l'utilisateur.
+
+Il est prévu à terme (fictif) que ce système de recommandation soit automatisé selon le film vu par le client et qu'il envoi directement les recommandations au client via son adresse e-mail à chaque fois que celui ci vient voir un film au cinéma.
+
+La base de données utilisé pour la réalisation de ce système de recommandation comprend un csv avec une matrice creuse des genres ainsi que des acteurs principaux. 
+
+Il est possible via notre livrable de filtrer les films par genre ainsi que par plage d'années afin d'obtenir une sélection de films plus précise et de contourner le problème des poids dans l'agorithme KNN Nearest Neighbors.
+
+Voici le code de notre algorithme :
+```python
+# Lecture du CSV utilisé pour l'algorithme (Filtrage avec films > 60 minutes, > 6 average_ratings, > 100.000 numVotes)
+    algo = pd.read_csv("https://raw.githubusercontent.com/TCH-Gitprojects/Project-2-WCS/main/StreamLit/dfalgotest2.csv")
+# Changement de l'index par le titre des films en FR
+    algo.index = algo["title"]
+    algo = algo.loc[algo["numVotes"]>=100000]
+# Définition du X pour l'algorithme, choix de drop les colonnes numVotes, startYear et runtimeMinutes qui ne sont pas assez corrélées pour un résultat probant
+    X = algo.select_dtypes("number").drop(["numVotes","startYear","runtimeMinutes"],axis=1)
+    start_years = algo['startYear'].unique()
+    
+# Création du selecteur de genres pour le livrable
+    genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime',
+          'Documentary', 'Drama', 'Family', 'Fantasy', 'Film-Noir',
+          'History', 'Horror', 'Music', 'Musical', 'Mystery',
+          'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western']
+    
+    selected_genres = st.multiselect("Quel est votre genre de film préféré ?", genres, key="unique_key")
+
+# Création du selecteur de plage d'années pour le livrable
+    selected_start_year_range = st.slider(
+    "Quelle plage de date de sortie des films souhaitez vous ?",
+    min_value=int(start_years.min()),
+    max_value=int(start_years.max()),
+    value=(int(start_years.min()), int(start_years.max()))
+	)
+    
+    filtered_movies = algo[
+    (algo['startYear'] >= selected_start_year_range[0]) &
+    (algo['startYear'] <= selected_start_year_range[1])
+	]
+    
+    for genre in selected_genres: filtered_movies = filtered_movies[filtered_movies[genre] == 1]
+    
+# Création du selecteur de film pour l'algorithme
+    option = st.selectbox("Quel est le film que vous aimez?", filtered_movies)
+
+# Utilisation de l'algo NearestNeighbors
+    modelNN = NearestNeighbors(n_neighbors=5).fit(X)
+    filmchoisi = X.loc[option]
+    filmchoisi_array = np.array(filmchoisi)
+    filmchoisi_reshaped = filmchoisi_array.reshape(1,-1)
+    
+    modelNN.kneighbors(filmchoisi_reshaped,
+                    n_neighbors=15)
+    
+    neigh_dist, neigh_index = modelNN.kneighbors(filmchoisi_reshaped,
+    n_neighbors=15
+	)
+
+# Affichage des résultats sous forme de dataframe avec lien IMDb cliquable
+    neigh_index2 = neigh_index[0][1:]
+    voisins = pd.DataFrame(algo.iloc[neigh_index2])
+    voisins["imdb_link"] = voisins["tconst"].apply(lambda x: f"https://www.imdb.com/title/{x}/")
+    columns = ["genres","averageRating","numVotes","imdb_link"]
+    voisinscol = voisins[columns]
+    voisinscol["imdb_link"] = voisinscol["imdb_link"].apply(make_clickable)
+    html_table = voisinscol.to_html(escape=False)
+    html_table_with_links = html_table.replace("&lt;", "<").replace("&gt;", ">")
+    
+    with st.spinner('Patience jeune Padawan...'):
+        time.sleep(2.5)
+    
+    st.success('It''s movie time!')
+    
+    st.write("Vos films recommandés:")
+    
+    st.markdown(html_table_with_links, unsafe_allow_html=True)
+
+
+
