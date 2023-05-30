@@ -589,7 +589,7 @@ elif tabs == 'Difficultées':
     st.write("Le temps nous a fait défaut, ce qui nous a freiné dans notre apprentissage des outils nécessaires à la réalisation du projet. Par ce fait, nous n'avons pu aller au bout de nos idées, comme la création d'une newsletter pour les clients. Cela aurait pu servir à leur proposer d'autres films en fonction de leurs préférences cinématographiques, centres d'intérêts et ainsi les fidéliser.")
 
     st.header("Organisation du projet :date:")
-    st.write("Le manque d'organisation au début du projet nous a également fait perdre du temps, tout la résolution imprévus de problèmes techniques.")
+    st.write("Le manque d'organisation au début du projet nous a également fait perdre du temps, toute la résolution imprévus de problèmes techniques.")
 
     st.header("Technique :computer:")
     st.write("Le travail sur Visual Studio Code en local impose un partage des fichiers réguliers auprès des autres membres de l'équipe et empèche d'avoir un visu instantané sur l'avancement de chacun. Il aurait été préférable de travailler sur un outil colaboratif du type Git afin que chacun puisse avancer au même rythme que le reste de l'équipe ou du moins pouvoir jaugé l'avancement du projet en direct.")
