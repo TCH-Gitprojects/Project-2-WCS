@@ -5,17 +5,17 @@
 
 Projet de groupe réalisé dans le cadre de la formation de DATA ANALYST à la Wild Code School de Nantes. A partir de la base de données issue d'IMDb, nous devions extraire, filtrer, nettoyer et traiter les données afin de définir une orientation commercial cohérente pour un cinéma en perte de vitesse et situé dans le département de la Creuse.
 
-## Pour avoir accès à notre livrable web : 
+# Pour avoir accès à notre livrable web : 
 https://tch-gitprojects-project-2-wcs-streamlit-app-f30yon.streamlit.app/
 
-## Plusieurs axes d'étude pour la réalisation de ce projet :
+# Plusieurs axes d'étude pour la réalisation de ce projet :
 
 - Etude du département de la Creuse. 
 - Etude des tendances du marché du cinéma. 
 - Définition de KPI pour le suivi commercial du cinéma. 
 - Réalisation d'un algorithme de recommandation de film.
 
-### Etude du département de la Creuse :
+# Etude du département de la Creuse :
 
 Pour réalisé cette étude, nous nous sommes basés sur les données disponibles sur le site de l'INSEE afin d'établir un constat de la population de la Creuse en terme de densité, nombre d'habitants, age moyen.
 Ces données nous ont permis d'avoir un oeil plus avisé sur le potentiel publique du cinéma pour lequel nous travaillons.
@@ -87,7 +87,7 @@ Le code de ces représentations est le suivant :
     st_echarts(options=option)
 ```
 
-### Etude des tendances du marché du cinéma :
+# Etude des tendances du marché du cinéma :
 
 Pour cette étude, nous avons utilisé la base de données en open source de IMDb disponible sur ce lien https://developer.imdb.com/non-commercial-datasets/.
 
@@ -172,7 +172,7 @@ Une partie du code de ces représentations :
         st.metric(label="Durée moyenne sur les 30 dernières années", value="91 minutes")
 ```
 
-### Définition de KPI pour le suivi commercial du cinéma :
+# Définition de KPI pour le suivi commercial du cinéma :
 
 Pour la réalisation des différents KPI de suivi, nous avons choisi l'année passée (2022) afin de pouvoir comparer l'évolution du cinéma en cours d'année 2023 et voir si notre offre de films répond bien aux évolutions du marché ainsi qu'a la demande du publique.
 
@@ -227,7 +227,7 @@ with st.expander("Top genres 2022 :"):
         st.dataframe(kpi_22, use_container_width=True)
 ```
 
-### Réalisation d'un algorithme de recommandation de film :
+# Réalisation d'un algorithme de recommandation de film :
 
 Pour répondre à la demande du directeur de cinéma, nous avons réalisé un système de recommandation de films.
 Celui-ci est en phase de test et permet à l'heure actuel de fournir une liste de recommandation selon un film choisi par l'utilisateur.
@@ -306,6 +306,16 @@ Voici le code de notre algorithme :
     st.write("Vos films recommandés:")
     
     st.markdown(html_table_with_links, unsafe_allow_html=True)
+```
 
+# L'équipe ayant réalisé ce projet :
 
+<p>https://www.linkedin.com/in/tonychatri/<br>
+https://www.linkedin.com/in/lucas-zubiarrain/<br>
+https://www.linkedin.com/in/tabitha-corazon/<br>
+https://www.linkedin.com/in/emmanuel-balthazar-1420ab252/</p>
+
+<div align="center">
+  <center><h1>Merci à tous</h1></center>
+</div>
 
