@@ -5,6 +5,9 @@
 
 Projet de groupe réalisé dans le cadre de la formation de DATA ANALYST à la Wild Code School de Nantes. A partir de la base de données issue d'IMDb, nous devions extraire, filtrer, nettoyer et traiter les données afin de définir une orientation commercial cohérente pour un cinéma en perte de vitesse et situé dans le département de la Creuse.
 
+## Pour avoir accès à notre livrable web : 
+https://tch-gitprojects-project-2-wcs-streamlit-app-f30yon.streamlit.app/
+
 ## Plusieurs axes d'étude pour la réalisation de ce projet :
 
 - Etude du département de la Creuse. 
