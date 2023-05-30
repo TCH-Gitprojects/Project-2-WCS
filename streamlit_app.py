@@ -134,8 +134,8 @@ st.markdown(css, unsafe_allow_html=True)
 
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration","Difficultées"], 
-                         iconName=['co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates','error'], default_choice=0)
+    tabs = on_hover_tabs(tabName=['Présentation', 'La Creuse', 'Exploration', 'KPI',"Machine Learning","Axes d'amélioration"], 
+                         iconName=['co_present', 'signpost', 'dashboard', 'data_thresholding','select_all','tips_and_updates'], default_choice=0)
 	
 if tabs =='Présentation':
     st.title('Bienvenue sur le Streamlit de notre projet :man-man-girl-boy:')
