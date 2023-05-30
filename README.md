@@ -131,7 +131,7 @@ imdbmovs2 = pd.merge(imdbmovs,
 
 A la fin de nos manipulations de données, nous avons pu produire deux Dataframe à partir desquels nous avons produits notre étude de marché et nos Datavisualisations ainsi que nos Metrics importantes.
 
-Il nous a paru plus judicieux de focaliser notre analyse sur les 30 dernières années afin de concervé la cohérence d'une étude de marché pour un directeur de cinéma.
+Il nous a paru plus judicieux de focaliser notre analyse sur les 30 dernières années afin de concerver la cohérence d'une étude de marché pour un directeur de cinéma.
 
 Le code de ces représentations est le suivant :
 ```python
