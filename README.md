@@ -136,7 +136,7 @@ A la fin de nos manipulations de données, nous avons pu produire deux Dataframe
 
 Il nous a paru plus judicieux de focaliser notre analyse sur les 30 dernières années afin de concerver la cohérence d'une étude de marché pour un directeur de cinéma.
 
-Le code de ces représentations est le suivant :
+Une partie du code de ces représentations :
 ```python
 # Utilisation des expander de StreamLit pour une meilleure lecture de notre site
 
@@ -171,3 +171,57 @@ Le code de ces représentations est le suivant :
         st.plotly_chart(fig5, use_container_width=True)
         st.metric(label="Durée moyenne sur les 30 dernières années", value="91 minutes")
 ```
+
+### Définition de KPI pour le suivi commercial du cinéma :
+
+Pour la réalisation des différents KPI de suivi, nous avons choisi l'année passée (2022) afin de pouvoir comparer l'évolution du cinéma en cours d'année 2023 et voir si notre offre de films répond bien aux évolutions du marché ainsi qu'a la demande du publique.
+
+Pour ce faire, nous avons utilisé les Dataframe obtenus après filtrage et appliqué un filtre supplémentaire pour obtenir uniquement les données de 2022.
+
+Nous avons ensuite réalisé les différents Metrics et Datavisualisations avec le même principe que pour l'exploration de données.
+
+Exemples :
+```python
+# Treemap des genres pour l'année 2022 
+with st.expander("Top genres 2022 :"):
+        kpi_graph = go.Figure(go.Treemap(
+        values=graph2022.values,
+        labels=graph2022.index,
+        parents=["Genres 2022"] * len(graph2022.index),
+        textinfo = "label+value+percent root",
+        textposition='middle center',
+        hoverinfo = 'skip',
+        texttemplate='<b>%{label}</b><br>%{value} films<br>Ratio : %{percentRoot}',
+        insidetextfont=dict(size=16),
+        marker=dict(
+            colorscale='Viridis'),
+            ))
+    
+        kpi_graph.update_layout(margin = dict(t=0, l=0, r=0, b=0),
+        height=630,
+        )
+        st.plotly_chart(kpi_graph, use_container_width=True)
+        st.metric(label="Genre le plus représenté", value="Drama avec 27%")
+   
+# Scrapping manuel des affiches des films du top 10 2022 pour affichage sur notre livrable
+    with st.expander("Top 10 films 2022 :"):
+        st.markdown("<h1 style='text-align: center; color: black;'>Top 10 2022</h1>", unsafe_allow_html=True)
+    
+        clicked = clickable_images(
+        [
+        "https://m.media-amazon.com/images/M/MV5BYzJkZDIwYTAtMGU4Mi00NzU3LWI1MWItODg0M2Q1NmIxYmNlXkEyXkFqcGdeQXVyMTIyNzY0NTMx._V1_.jpg",
+        "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/f5a21f64af7359f7aaa7c29dee8a12a97630e707cdbf71e0ae6b063322fb8575._RI_TTW_.jpg",
+        "https://fr.web.img3.acsta.net/pictures/22/03/29/15/12/0827894.jpg",
+        "https://m.media-amazon.com/images/M/MV5BNjMyMDBjMGUtNDUzZi00N2MwLTg1MjItZTk2MDE1OTZmNTYxXkEyXkFqcGdeQXVyMTQ5NjA0NDM0._V1_.jpg",
+        "https://fr.web.img6.acsta.net/pictures/22/06/14/16/36/2606624.jpg",
+        "https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_.jpg",
+        "https://m.media-amazon.com/images/M/MV5BODUwNDNjYzctODUxNy00ZTA2LWIyYTEtMDc5Y2E5ZjBmNTMzXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
+        "https://m.media-amazon.com/images/M/MV5BMzM4ZDJhYjYtZGY5Ny00NTk0LWI4ZTYtNjczZDFiMGI2ZjEzXkEyXkFqcGdeQXVyNjc5NjEzNA@@._V1_FMjpg_UX1000_.jpg",
+        "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_FMjpg_UX1000_.jpg",
+        "https://fr.web.img6.acsta.net/pictures/22/11/21/09/41/4024615.jpg"
+        ],
+        titles=[f"Image #{str(i)}" for i in range(5)],
+        div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+        img_style={"margin": "5px", "height": "200px"},
+	    )
+        st.dataframe(kpi_22, use_container_width=True)
