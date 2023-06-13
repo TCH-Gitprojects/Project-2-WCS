@@ -24,7 +24,7 @@ Nous avons représentés les données sous forme de Datavisualisation ainsi que 
 
 Le code de ces représentations est le suivant :
 ```python
-# Les données ont été rentrée en brute dans le code par soucis de rapidité
+# Les données ont été rentrées en brute dans le code par soucis de rapidité
 
 # Représentation des Metrics importants sous forme de colonnes pour une meilleure visibilité sur le livrable
     col1, col2 = st.columns(2)
